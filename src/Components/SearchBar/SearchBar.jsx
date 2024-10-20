@@ -1,30 +1,44 @@
-export const SearchBar = ({ onSearch }) => {
+import { Toaster } from "react-hot-toast";
+import { HiOutlineSearch } from "react-icons/hi";
+
+import { errNotify } from "../../notifications/error-notify";
+import { ERR_EMPTY_SEARCH } from "../../notifications/constants";
+
+import styles from "./SearchBar.module.css";
+
+const SearchBar = ({ onSearch }) => {
   const handleSubmit = (evt) => {
     evt.preventDefault();
     const form = evt.target;
-    const topic = form.elements.topic.value;
-    if (form.elements.topic.value.trim() === "") {
-      alert("Please enter search term!");
+    const searchStr = form.elements.search.value;
+    if (searchStr.trim() === "") {
+      errNotify(ERR_EMPTY_SEARCH);
       return;
     }
-    onSearch(topic);
+    onSearch(searchStr);
     form.reset();
   };
 
   return (
-    <div>
-      <header>
-        <form>
+    <header className={styles.header}>
+      <form className={styles.form} onSubmit={handleSubmit}>
+        <div>
           <input
+            className={styles.input}
             type="text"
-            autocomplete="off"
-            autofocus
+            name="search"
+            autoComplete="off"
+            autoFocus
             placeholder="Search images and photos"
           />
-          <button type="submit">Search</button>
-        </form>
-      </header>
-    </div>
+          <Toaster />
+        </div>
+
+        <button className={styles.button} type="submit">
+          <HiOutlineSearch />
+        </button>
+      </form>
+    </header>
   );
 };
 
