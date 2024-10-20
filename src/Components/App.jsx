@@ -1,4 +1,4 @@
-// import SearchBar from "./SearchBar/SearchBar";
+import SearchBar from "./SearchBar/SearchBar";
 import styles from "./App.module.css";
 import { useState, useEffect } from "react";
 import Modal from "react-modal";
