@@ -1,5 +1,5 @@
 import axios from "axios";
-import { BASE_URL, ACCESS_KEY } from "./constants";
+import { BASE_URL, ACCESS_KEY } from "./constans";
 
 export const fetchData = async (searchStr, pageNum = 1) => {
   const axiosInstance = axios.create({
