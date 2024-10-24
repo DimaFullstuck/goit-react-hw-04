@@ -1,4 +1,4 @@
-import styles from "./ImageCard.module.css";
+import styles from './ImageCard.module.css';
 
 export const ImageCard = ({ image: { urls, description } }) => {
   return (
