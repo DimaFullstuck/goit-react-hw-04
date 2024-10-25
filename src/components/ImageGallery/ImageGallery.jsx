@@ -1,13 +1,13 @@
-import { ImageCard } from "./ImageCard";
+import { ImageCard } from '../ImageCard/ImageCard';
 
-import styles from "./ImageGallery.module.css";
+import styles from './ImageGallery.module.css';
 
 const ImageGallery = ({ images, openModal }) => {
-  const handleImageClick = (event) => {
-    const clickedCard = event.target.closest("li");
+  const handleImageClick = event => {
+    const clickedCard = event.target.closest('li');
     if (clickedCard) {
       const imageId = clickedCard.dataset.imageid;
-      const clickedImageObj = images.find((image) => image.id === imageId);
+      const clickedImageObj = images.find(image => image.id === imageId);
       if (clickedImageObj) {
         openModal(clickedImageObj);
       }
@@ -17,7 +17,7 @@ const ImageGallery = ({ images, openModal }) => {
     <>
       {images.length > 0 && (
         <ul className={styles.gallery} onClick={handleImageClick}>
-          {images.map((image) => (
+          {images.map(image => (
             <li key={image.id} data-imageid={image.id}>
               <ImageCard image={image} />
             </li>
